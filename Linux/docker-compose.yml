@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  VRisingDedicatedServer:
+    image: dechertnicholas/vrising-dedicated-server:linux
+    container_name: "VRisingDedicatedServer"
+    build: .
+    restart: unless-stopped
+    ports:
+      # YourMachine:27016 (don't change 27016)
+      - 27016:27016/udp
+    #environment:
+    volumes:
+      # YourMachine:DockerContainer
+      # Be sure to create the folders for YourMachine, or you'll get an error
+      - ./Steam:/root/Steam
+      # - ./Settings:/root/Settings
