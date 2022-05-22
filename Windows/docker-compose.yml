@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  VRisingDedicatedServer:
+    image: dechertnicholas/vrising-dedicated-server:ltsc2019
+    container_name: "VRisingDedicatedServer"
+    build: .
+    restart: unless-stopped
+    ports:
+      # YourMachine:27016 (don't change 27016)
+      - 27016:27016/udp
+      # VRage Remote API
+      # - 8080:8080/tcp
+    environment:
+      # The name of your server folder
+      # - INSTANCENAME=DockerTest
+      # Should steam be installed if it can't be found, useful on first run
+      # Be sure to mount your steam folder below, otherwise steam will download each time
+      - INSTALLSTEAM=TRUE
+    volumes:
+      # YourMachine:DockerContainer
+      # Be sure to create the folders for YourMachine, or you'll get an error
+      - ./Steam:C:/GameData/Steam
+      # - ./Instances:C:/GameData/Instances
