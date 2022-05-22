@@ -13,8 +13,12 @@ WORKDIR /root
 COPY ["./Server Files", "/root/"]
 RUN chmod +x "./setup.sh" && "./setup.sh"
 
-#COPY ["./start.ps1", "/root/start.ps1"]
+COPY ["./Start-Server.ps1", "/root/Start-Server.ps1"]
 
-#SHELL [ "pwsh", "-Command" ]
+EXPOSE 9876/udp
+EXPOSE 9877/udp
+EXPOSE 27015/udp
+EXPOSE 27016/udp
 
-#CMD /root/start.ps1
+SHELL [ "pwsh", "-Command" ]
+CMD /root/Start-Server.ps1

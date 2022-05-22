@@ -13,12 +13,10 @@ apt update
 apt install -y -qq powershell 
 
 # Install Wine
-apt install -y -qq wine wget unzip xvfb
+apt install -y -qq wine32 wine64 wget unzip xvfb
+winecfg
 #mkdir -p /root/.wine/drive_c/steamcmd
 #mkdir -p /root/.wine/drive_c/users/root/AppData/LocalLow/'Stunlock Studios'/VRisingServer/Settings
-#wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip -P /root/Steam
-#cd /root/Steam
-#unzip steamcmd.zip
 
 # Install Steam
 # Create a new sources.list, then append to it

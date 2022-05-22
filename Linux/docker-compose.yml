@@ -2,16 +2,21 @@ version: "3.8"
 
 services:
   VRisingDedicatedServer:
-    image: dechertnicholas/vrising-dedicated-server:linux
+    image: dechertnicholas/vrising-dedicated-server:linux-local
+    stdin_open: true
+    tty: true
     container_name: "VRisingDedicatedServer"
     build: .
     restart: unless-stopped
+    environment:
+      # Savedata\Saves\v1\<WORLDNAME>\<data>
+      # Change this in "ServerHostSettings.json" as well, if you choose to change it
+      - WORLDNAME=world1
     ports:
-      # YourMachine:27016 (don't change 27016)
+      - 9876:9876/udp
+      - 9877:9877/udp
+      - 27015:27015/udp
       - 27016:27016/udp
-    #environment:
     volumes:
-      # YourMachine:DockerContainer
-      # Be sure to create the folders for YourMachine, or you'll get an error
-      - ./Steam:/root/Steam
-      # - ./Settings:/root/Settings
+      # This folder will hold the Steam install, game install, and save data
+      - ./GameData:/root/GameData
