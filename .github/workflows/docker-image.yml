@@ -25,7 +25,7 @@ jobs:
     - uses: actions/checkout@v3
       
     - name: Build the Docker image
-      run: docker build ./Linux/Dockerfile -t dechertnicholas/vrising-dedicated-server:linux
+      run: docker build ./Linux/ -t dechertnicholas/vrising-dedicated-server:linux
     
     - name: Docker Login
       if: github.event.pull_request.merged == true || github.ref == 'refs/heads/main'
