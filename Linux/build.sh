@@ -1,0 +1,1 @@
+docker build . -t dechertnicholas/vrising-dedicated-server:linux-local
